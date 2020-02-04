@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Parker Mecham
+        //Section 2
+
+        /* This program will prompt the user to enter in a number of teams to play,
+        then ask the user to enter in each team's name. The program will assign a 
+        random number of wins to each team, then it will print out the team that had
+        the most wins. Following that the program will print the full spread of all 
+        teams and their respective records. 
+
+        */
+
+        //Declare variables
+
+        //Number of teams
+        var numTeams;
+        //Arrays for team names/win count
+        var teamNames = [];
+        var teamWins = [];
+        //score variables to output
+        var highScore = 0;
+        var winningTeam;
+        //final output variable
+        var finalOutput = "";
+
+        //Prompts the user to enter in the number of teams, get team names
+        numTeams = parseInt(prompt("How many teams?"));
+
+        //Makes sure that the user inputs a valid number of teams
+        if(numTeams > 0)
+        {
+            //Goes through all the teams and assigns the name and score to the arrays
+            for (var i = 0; i < numTeams; i++) 
+            {       
+                teamNames[i] = prompt("What is team " + (i + 1) + "'s name?");
+                
+                teamWins[i] = Math.floor(Math.random()*26);
+            }
+            
+            //Figures out which team has the highest score, assigns the values from the array to output variables    
+            for (var i = 0; i < numTeams; i++) 
+            {
+                
+                if(teamWins[i] > highScore)
+                {
+                    highScore = teamWins[i];
+                    winningTeam = teamNames[i];            
+                }
+                
+                //Assigns all the teams and their win record to the output variable
+                finalOutput += teamNames[i] + " " + teamWins[i] + "-" + (25 - teamWins[i]) + "\n";
+            }
+
+            //Displays the team with the highest score
+            alert(winningTeam + " had the most wins with a record of " + highScore + "-" + (25 - highScore));
+            alert(finalOutput);
+        }
+
+        else
+        {
+            alert("No teams to display");
+        }    
+
+    </script>
+</body>
+</html>
